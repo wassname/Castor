@@ -39,7 +39,7 @@ QID = data.Field(sequential=False)
 QUESTION = data.Field(batch_first=True)
 ANSWER = data.Field(batch_first=True)
 LABEL = data.Field(sequential=False)
-EXTERNAL = data.Field(sequential=True, tensor_type=torch.FloatTensor, batch_first=True, use_vocab=False,
+EXTERNAL = data.Field(sequential=True, dtype=torch.FloatTensor, batch_first=True, use_vocab=False,
             postprocessing=data.Pipeline(lambda arr, _, train: [float(y) for y in arr]))
 
 if config.dataset == 'TREC':

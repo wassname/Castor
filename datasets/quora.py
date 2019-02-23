@@ -20,11 +20,11 @@ def get_class_probs(sim, *args):
 class Quora(CastorPairDataset):
     NAME = 'Quora'
     NUM_CLASSES = 2
-    ID_FIELD = Field(sequential=False, tensor_type=torch.FloatTensor, use_vocab=False, batch_first=True)
+    ID_FIELD = Field(sequential=False, dtype=torch.FloatTensor, use_vocab=False, batch_first=True)
     AID_FIELD = Field(sequential=False, use_vocab=False, batch_first=True)
     TEXT_FIELD = Field(batch_first=True, tokenize=lambda x: x)  # tokenizer is identity since we already tokenized it to compute external features
-    EXT_FEATS_FIELD = Field(tensor_type=torch.FloatTensor, use_vocab=False, batch_first=True, tokenize=lambda x: x)
-    LABEL_FIELD = Field(sequential=False, tensor_type=torch.FloatTensor, use_vocab=False, batch_first=True, postprocessing=Pipeline(get_class_probs))
+    EXT_FEATS_FIELD = Field(dtype=torch.FloatTensor, use_vocab=False, batch_first=True, tokenize=lambda x: x)
+    LABEL_FIELD = Field(sequential=False, dtype=torch.FloatTensor, use_vocab=False, batch_first=True, postprocessing=Pipeline(get_class_probs))
     RAW_TEXT_FIELD = RawField()
 
     @staticmethod

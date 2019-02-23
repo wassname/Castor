@@ -38,7 +38,7 @@ class SMModelBridge(object):
         self.QUESTION = data.Field(batch_first=True)
         self.ANSWER = data.Field(batch_first=True)
         self.LABEL = data.Field(sequential=False)
-        self.EXTERNAL = data.Field(sequential=True, tensor_type=torch.FloatTensor, batch_first=True, use_vocab=False,
+        self.EXTERNAL = data.Field(sequential=True, dtype=torch.FloatTensor, batch_first=True, use_vocab=False,
                               postprocessing=data.Pipeline(lambda arr, _, train: [float(y) for y in arr]))
 
         if 'TrecQA' in args.dataset:
